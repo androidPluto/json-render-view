@@ -1,9 +1,9 @@
-package com.srtvprateek.jsonrenderview.internal
+package com.jsonrenderview.internal
 
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import com.srtvprateek.jsonrenderview.Config
+import com.jsonrenderview.Config
 import org.json.JSONArray
 import org.json.JSONObject
 

@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.databinding.ActivityMainBinding
-import com.srtvprateek.jsonrenderview.Config
+import com.jsonrenderview.Config
 
 class MainActivity : AppCompatActivity() {
 

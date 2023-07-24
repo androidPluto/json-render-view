@@ -1,4 +1,4 @@
-package com.srtvprateek.jsonrenderview
+package com.jsonrenderview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.ScrollView
-import com.srtvprateek.jsonrenderview.internal.OnRowClickListener
-import com.srtvprateek.jsonrenderview.internal.RowView
-import com.srtvprateek.jsonrenderview.internal.extensions.color
-import com.srtvprateek.jsonrenderview.internal.spannable.createSpan
+import com.jsonrenderview.internal.OnRowClickListener
+import com.jsonrenderview.internal.RowView
+import com.jsonrenderview.internal.extensions.color
+import com.jsonrenderview.internal.spannable.createSpan
+import com.srtvprateek.jsonrenderview.R
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

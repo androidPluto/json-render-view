@@ -5,7 +5,7 @@
     android:fillViewport="true"
     android:orientation="vertical">
 
-    <com.srtvprateek.jsonrenderview.JsonRenderView
+    <com.jsonrenderview.JsonRenderView
         android:id="@+id/json"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

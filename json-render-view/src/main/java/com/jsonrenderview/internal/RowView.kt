@@ -1,15 +1,15 @@
-package com.srtvprateek.jsonrenderview.internal
+package com.jsonrenderview.internal
 
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import com.srtvprateek.jsonrenderview.Config
+import com.jsonrenderview.Config
+import com.jsonrenderview.internal.extensions.color
+import com.jsonrenderview.internal.spannable.createSpan
 import com.srtvprateek.jsonrenderview.R
 import com.srtvprateek.jsonrenderview.databinding.JrvViewRowBinding
-import com.srtvprateek.jsonrenderview.internal.extensions.color
-import com.srtvprateek.jsonrenderview.internal.spannable.createSpan
 import org.json.JSONArray
 import org.json.JSONObject
 

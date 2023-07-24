@@ -1,4 +1,4 @@
-package com.srtvprateek.jsonrenderview
+package com.jsonrenderview
 
 import android.graphics.Color
 import androidx.annotation.ColorInt

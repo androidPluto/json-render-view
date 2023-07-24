@@ -1,4 +1,4 @@
-package com.srtvprateek.jsonrenderview.internal.spannable
+package com.jsonrenderview.internal.spannable
 
 import android.content.Context
 import android.graphics.Typeface
@@ -10,8 +10,8 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import com.jsonrenderview.internal.extensions.color
 import com.srtvprateek.jsonrenderview.R
-import com.srtvprateek.jsonrenderview.internal.extensions.color
 import java.text.Normalizer
 
 internal inline fun TextView.setSpan(
