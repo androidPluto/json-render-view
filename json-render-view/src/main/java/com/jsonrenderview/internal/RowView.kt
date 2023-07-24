@@ -82,10 +82,6 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
 
     fun handleJsonObject(key: String, value: Any, hierarchy: Int) {
         val newHierarchy = hierarchy + 1
-        val keySpan: CharSequence = context.createSpan {
-            append(fontColor("\"$key\"", config.keyFieldColor))
-            append(fontColor(" : ", context.color(R.color.jrv__colon_color)))
-        }
         setIndentation(newHierarchy)
         hideIcon()
         when (value) {
