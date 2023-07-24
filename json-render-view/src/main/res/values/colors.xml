@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="jrv__text_highlight">#aaff9100</color>
+    <color name="jrv__array_length_text">#cc11141c</color>
+    <color name="jrv__root_text_color">#7711141c</color>
+    <color name="jrv__colon_color">#11141c</color>
+
+</resources>

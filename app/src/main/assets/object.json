@@ -1,0 +1,66 @@
+{
+  "name": "John Doe",
+  "age": 30,
+  "is_student": true,
+  "height": 175.5,
+  "address": {
+    "street": "123 Main Street",
+    "city": "New York",
+    "zipcode": "10001"
+  },
+  "hobbies": ["Reading", "Running", "Swimming"],
+  "education": {
+    "degree": "Bachelor of Science",
+    "major": "Computer Science",
+    "year_graduated": 2015
+  },
+  "friends": [
+    {
+      "name": "Alice",
+      "age": 28,
+      "address": {
+        "street": "456 Elm Street",
+        "city": "Los Angeles",
+        "zipcode": "90001"
+      }
+    },
+    {
+      "name": "Bob",
+      "age": 32,
+      "address": {
+        "street": "789 Oak Street",
+        "city": "Chicago",
+        "zipcode": "60601"
+      }
+    },
+    {
+      "name": "Eve",
+      "age": 26,
+      "address": {
+        "street": "101 Pine Avenue",
+        "city": "Seattle",
+        "zipcode": "98101"
+      }
+    },
+    {
+      "name": "Mike",
+      "age": 29,
+      "address": {
+        "street": "222 Cedar Road",
+        "city": "San Francisco",
+        "zipcode": "94101"
+      }
+    }
+  ],
+  "is_married": false,
+  "date_of_birth": "1993-07-15",
+  "favorite_colors": {
+    "primary": "Blue",
+    "secondary": "Green"
+  },
+  "additional_info": {
+    "interests": ["Photography", "Cooking"],
+    "job_title": "Software Engineer",
+    "salary": 75000.50
+  }
+}
