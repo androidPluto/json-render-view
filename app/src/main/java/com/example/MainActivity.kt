@@ -2,16 +2,20 @@ package com.example
 
 import android.graphics.Color
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.databinding.ActivityMainBinding
 import com.srtvprateek.jsonrenderview.Config
-import java.io.IOException
-import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: JSONReaderViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.json.applyConfig(
@@ -20,19 +24,13 @@ class MainActivity : AppCompatActivity() {
                 .valueNumberColor(Color.MAGENTA)
                 .build()
         )
-        Thread {
-            val inputStream: InputStream?
-            try {
-                inputStream = assets.open("object.json")
-                val length = inputStream.available()
-                val buffer = ByteArray(length)
-                inputStream.read(buffer)
-                val result = String(buffer, Charsets.UTF_8)
-                inputStream.close()
-                runOnUiThread { binding.json.bind(result) }
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }.start()
+        viewModel.jsonString.removeObserver(parsedAttrObserver)
+        viewModel.jsonString.observe(this, parsedAttrObserver)
+
+        viewModel.parseJson(assets.open("array.json"))
+    }
+
+    private val parsedAttrObserver = Observer<String> {
+        binding.json.bind(it)
     }
 }
