@@ -2,6 +2,8 @@ package com.example
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -30,7 +32,20 @@ class MainActivity : AppCompatActivity() {
         viewModel.parseJson(assets.open("array.json"))
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     private val parsedAttrObserver = Observer<String> {
         binding.json.bind(it)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_expand -> binding.json.expand()
+            R.id.action_collapse -> binding.json.collapse()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
