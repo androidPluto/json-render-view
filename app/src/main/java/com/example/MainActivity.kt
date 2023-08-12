@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.jsonString.removeObserver(parsedAttrObserver)
         viewModel.jsonString.observe(this, parsedAttrObserver)
 
-        viewModel.parseJson(assets.open("array.json"))
+        viewModel.parseJson(assets.open("object.json"))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

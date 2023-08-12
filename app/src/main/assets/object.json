@@ -12,7 +12,52 @@
   "education": {
     "degree": "Bachelor of Science",
     "major": "Computer Science",
-    "year_graduated": 2015
+    "year_graduated": 2015,
+    "education": {
+      "degree": "Bachelor of Science",
+      "major": "Computer Science",
+      "year_graduated": 2015,
+      "education": {
+        "degree": "Bachelor of Science",
+        "major": "Computer Science",
+        "year_graduated": 2015,
+        "education": {
+          "degree": "Bachelor of Science",
+          "major": "Computer Science",
+          "year_graduated": 2015,
+          "education": {
+            "degree": "Bachelor of Science",
+            "major": "Computer Science",
+            "year_graduated": 2015,
+            "education": {
+              "degree": "Bachelor of Science",
+              "major": "Computer Science",
+              "year_graduated": 2015,
+              "education": {
+                "degree": "Bachelor of Science",
+                "major": "Computer Science",
+                "year_graduated": 2015,
+                "education": {
+                  "degree": "Bachelor of Science",
+                  "major": "Computer Science",
+                  "year_graduated": 2015,
+                  "education": {
+                    "degree": "Bachelor of Science",
+                    "major": "Computer Science",
+                    "year_graduated": 2015,
+                    "education": {
+                      "degree": "Bachelor of Science",
+                      "major": "Computer Science",
+                      "year_graduated": 2015
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "friends": [
     {
