@@ -11,6 +11,7 @@ import android.text.style.StyleSpan
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import com.jsonrenderview.internal.extensions.color
+import com.jsonrenderview.internal.extensions.font
 import com.srtvprateek.jsonrenderview.R
 import java.text.Normalizer
 
@@ -64,6 +65,10 @@ internal class Builder(private val context: Context) {
         else -> throw IllegalArgumentException("unhandled type $o")
     }
 
+    fun bold(span: CharSequence): CharSequence {
+        return span(span, getFontSpan(R.font.muli_bold))
+    }
+
     fun fontColor(span: CharSequence, @ColorInt color: Int): CharSequence {
         return span(span, ForegroundColorSpan(color))
     }
@@ -97,6 +102,8 @@ internal class Builder(private val context: Context) {
     fun build(): CharSequence {
         return spanBuilder
     }
+
+    private fun getFontSpan(font: Int) = CustomTypefaceSpan(context.font(font)!!)
 }
 
 private fun String.allOccurrences(search: String): ArrayList<Int> {

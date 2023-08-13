@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground"
     android:paddingHorizontal="4dp"
-    android:paddingVertical="2dp">
+    android:paddingVertical="4dp">
 
     <ImageView
         android:id="@+id/icon"
@@ -37,8 +37,8 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="2dp"
         android:background="@drawable/jrv__bg_array_count"
-        android:fontFamily="@font/muli_semibold"
-        android:gravity="center"
+        android:fontFamily="@font/muli"
+        android:gravity="center_vertical"
         android:paddingHorizontal="4dp"
         android:paddingBottom="2dp"
         android:textColor="@color/jrv__array_length_text"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/key"
         app:layout_constraintStart_toEndOf="@+id/key"
         app:layout_constraintTop_toTopOf="@+id/key"
-        tools:text="7 items"
+        tools:text="{ 7 }"
         tools:visibility="visible" />
 
     <TextView

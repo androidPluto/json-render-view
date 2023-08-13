@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import com.jsonrenderview.Config
 import com.jsonrenderview.internal.extensions.color
 import com.jsonrenderview.internal.spannable.createSpan
+import com.jsonrenderview.internal.spannable.setSpan
 import com.srtvprateek.jsonrenderview.R
 import com.srtvprateek.jsonrenderview.databinding.JrvViewRowBinding
 import org.json.JSONArray
@@ -47,9 +48,23 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
         binding.value.setBackgroundColor(Color.TRANSPARENT)
     }
 
-    private fun showKeyInfo(text: CharSequence) {
+    private fun showChildCount(type: Type, count: Int) {
         binding.keyInfo.visibility = VISIBLE
-        binding.keyInfo.text = text
+        binding.keyInfo.setSpan {
+            when(type) {
+                is Type.Object -> {
+                    append(bold("{ "))
+                    append("$count")
+                    append(bold(" }"))
+                }
+                is Type.Array -> {
+                    append(bold("[ "))
+                    append("$count")
+                    append(bold(" ]"))
+                }
+            }
+
+        }
     }
 
     fun showKey(s: CharSequence?) {
@@ -92,7 +107,7 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
                 }
                 showIcon(true)
                 setOnClickListener(OnRowClickListener(value, this, newHierarchy, config))
-                showKeyInfo("{ ${value.length()} }")
+                showChildCount(Type.Object, value.length())
                 showKey(keySpan)
             }
 
@@ -103,7 +118,7 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
                 }
                 showIcon(true)
                 setOnClickListener(OnRowClickListener(value, this, newHierarchy, config))
-                showKeyInfo("[ ${value.length()} ]")
+                showChildCount(Type.Array, value.length())
                 showKey(keySpan)
             }
 
@@ -134,5 +149,10 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
             binding.root.paddingEnd,
             binding.root.paddingBottom
         )
+    }
+
+    sealed class Type {
+        object Object: Type()
+        object Array: Type()
     }
 }
