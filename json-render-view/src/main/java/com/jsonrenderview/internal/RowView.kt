@@ -72,18 +72,14 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
         binding.key.text = s
     }
 
-    override fun setOnClickListener(listener: OnClickListener?) {
-        binding.root.setOnClickListener(listener)
-    }
-
     fun expand() {
-        binding.icon.tag = false
-        binding.icon.callOnClick()
+        tag = false
+        performClick()
     }
 
     fun collapse() {
-        binding.icon.tag = true
-        binding.icon.callOnClick()
+        tag = true
+        performClick()
     }
 
     fun addViewNoInvalidate(child: View) {
@@ -143,11 +139,11 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
 
     private fun setIndentation(newHierarchy: Int) {
         val startMarginInPixels = resources.getDimensionPixelSize(R.dimen.jrv__indentation_width)
-        binding.root.setPadding(
+        setPadding(
             startMarginInPixels * newHierarchy,
-            binding.root.paddingTop,
-            binding.root.paddingEnd,
-            binding.root.paddingBottom
+            paddingTop,
+            paddingEnd,
+            paddingBottom
         )
     }
 

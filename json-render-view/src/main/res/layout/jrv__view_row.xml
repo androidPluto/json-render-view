@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="?android:attr/selectableItemBackground"
     android:paddingHorizontal="4dp"
     android:paddingVertical="4dp">
 
@@ -24,7 +23,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/muli"
         android:gravity="center_vertical"
-        android:textIsSelectable="true"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +55,6 @@
         android:layout_marginLeft="6dp"
         android:fontFamily="@font/muli_semibold"
         android:gravity="center_vertical"
-        android:textIsSelectable="true"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/keyInfo"
         app:layout_constraintTop_toTopOf="parent"
