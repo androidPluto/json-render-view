@@ -25,19 +25,7 @@ internal class OnRowClickListener(
         if (view.childCount == 1) {
             (if (isJsonArray) value as JSONArray? else (value as JSONObject?)?.names())?.let {
                 isExpand = false
-
-                for (i in 0 until it.length()) {
-                    val childItemView = RowView(view.context, config)
-                    val childValue = it.opt(i)
-                    if (isJsonArray) {
-                        childItemView.handleJsonObject("$i", childValue, hierarchy)
-                    } else {
-                        (value as JSONObject?)?.opt(childValue as String)?.let { value ->
-                            childItemView.handleJsonObject(childValue, value, hierarchy)
-                        }
-                    }
-                    view.addViewNoInvalidate(childItemView)
-                }
+                addAllChildren(it)
             } ?: run {
                 isExpand = !isExpand
             }
@@ -50,6 +38,21 @@ internal class OnRowClickListener(
             for (i in 1 until view.childCount) {
                 view.getChildAt(i).visibility = if (!isExpand) VISIBLE else GONE
             }
+        }
+    }
+
+    private fun addAllChildren(array: JSONArray) {
+        for (i in 0 until array.length()) {
+            val childItemView = RowView(view.context, config)
+            val childValue = array.opt(i)
+            if (isJsonArray) {
+                childItemView.handleJsonObject("$i", childValue, hierarchy)
+            } else {
+                (value as JSONObject?)?.opt(childValue as String)?.let { value ->
+                    childItemView.handleJsonObject(childValue, value, hierarchy)
+                }
+            }
+            view.addViewNoInvalidate(childItemView)
         }
     }
 }

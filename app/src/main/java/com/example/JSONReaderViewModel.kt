@@ -29,6 +29,4 @@ class JSONReaderViewModel(application: Application) : AndroidViewModel(applicati
             }
         }
     }
-
-
 }

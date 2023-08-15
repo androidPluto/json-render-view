@@ -3,13 +3,14 @@ package com.jsonrenderview
 import android.graphics.Color
 import androidx.annotation.ColorInt
 
-class Config internal constructor() {
-    @ColorInt internal var keyFieldColor: Int = Color.parseColor("#9911141c")
-    @ColorInt internal var keyObjectColor: Int = Color.parseColor("#cc11141c")
-    @ColorInt internal var valueStringColor: Int = Color.parseColor("#f50057")
-    @ColorInt internal var valueNumberColor: Int = Color.parseColor("#1190bd")
-    @ColorInt internal var valueBooleanColor: Int = Color.parseColor("#ff00ff")
-    @ColorInt internal val valueNullColor: Int = Color.parseColor("#66231f40")
+data class Config internal constructor(
+    val keyFieldColor: Int = Color.parseColor("#9911141c"),
+    val keyObjectColor: Int = Color.parseColor("#cc11141c"),
+    val valueStringColor: Int = Color.parseColor("#f50057"),
+    val valueNumberColor: Int = Color.parseColor("#1190bd"),
+    val valueBooleanColor: Int = Color.parseColor("#ff00ff"),
+    val valueNullColor: Int = Color.parseColor("#66231f40")
+) {
 
     class Builder {
 
@@ -45,13 +46,13 @@ class Config internal constructor() {
         }
 
         fun build(): Config {
-            return Config().apply {
-                this.keyFieldColor = _keyFieldColor
-                this.keyObjectColor = _keyObjectColor
-                this.valueStringColor = _valueStringColor
-                this.valueNumberColor = _valueNumberColor
-                this.valueBooleanColor = _valueBooleanColor
-            }
+            return Config(
+                keyFieldColor = _keyFieldColor,
+                keyObjectColor = _keyObjectColor,
+                valueStringColor = _valueStringColor,
+                valueNumberColor = _valueNumberColor,
+                valueBooleanColor = _valueBooleanColor
+            )
         }
     }
 }
