@@ -140,7 +140,7 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
     private fun setIndentation(newHierarchy: Int) {
         val startMarginInPixels = resources.getDimensionPixelSize(R.dimen.jrv__indentation_width)
         setPadding(
-            startMarginInPixels * newHierarchy,
+            startMarginInPixels,
             paddingTop,
             paddingEnd,
             paddingBottom

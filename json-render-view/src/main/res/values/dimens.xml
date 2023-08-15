@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="jrv__indentation_width">16dp</dimen>
+    <dimen name="jrv__indentation_width">24dp</dimen>
 </resources>
