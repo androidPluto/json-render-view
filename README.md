@@ -29,3 +29,9 @@ binding.json.applyConfig(
 ```java
 binding.json.bind(jsonContent)
 ```
+#### Perform actions
+Expand & Collapse JSON tree
+```java
+binding.json.action.expand()
+binding.json.action.collapse()
+```
