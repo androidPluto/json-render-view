@@ -1,4 +1,4 @@
-package com.srtvprateek.jsonrenderview
+package com.jsonrenderview
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

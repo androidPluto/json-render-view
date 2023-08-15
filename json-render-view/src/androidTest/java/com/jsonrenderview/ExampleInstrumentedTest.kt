@@ -1,4 +1,4 @@
-package com.srtvprateek.jsonrenderview
+package com.jsonrenderview
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.srtvprateek.jsonrenderview.test", appContext.packageName)
+        assertEquals("com.jsonrenderview.test", appContext.packageName)
     }
 }

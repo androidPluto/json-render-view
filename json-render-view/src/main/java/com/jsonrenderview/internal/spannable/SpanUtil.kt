@@ -10,9 +10,9 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import com.jsonrenderview.R
 import com.jsonrenderview.internal.extensions.color
 import com.jsonrenderview.internal.extensions.font
-import com.srtvprateek.jsonrenderview.R
 import java.text.Normalizer
 
 internal inline fun TextView.setSpan(

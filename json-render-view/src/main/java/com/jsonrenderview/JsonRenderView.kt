@@ -9,7 +9,6 @@ import com.jsonrenderview.internal.OnRowClickListener
 import com.jsonrenderview.internal.RowView
 import com.jsonrenderview.internal.extensions.color
 import com.jsonrenderview.internal.spannable.createSpan
-import com.srtvprateek.jsonrenderview.R
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

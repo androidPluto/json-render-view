@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import com.jsonrenderview.Config
+import com.jsonrenderview.R
+import com.jsonrenderview.databinding.JrvViewRowBinding
 import com.jsonrenderview.internal.extensions.color
 import com.jsonrenderview.internal.spannable.createSpan
 import com.jsonrenderview.internal.spannable.setSpan
-import com.srtvprateek.jsonrenderview.R
-import com.srtvprateek.jsonrenderview.databinding.JrvViewRowBinding
 import org.json.JSONArray
 import org.json.JSONObject
 

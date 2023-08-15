@@ -8,7 +8,7 @@ def verCode, verName
 (verCode, verName) = genVersion()
 
 android {
-    namespace 'com.srtvprateek.jsonrenderview'
+    namespace 'com.jsonrenderview'
     compileSdk 33
 
     buildFeatures {
