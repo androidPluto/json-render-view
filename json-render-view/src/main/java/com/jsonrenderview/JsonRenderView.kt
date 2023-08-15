@@ -46,7 +46,7 @@ class JsonRenderView : ScrollView {
         val horizontalScrollView = HorizontalScrollView(context)
         horizontalScrollView.layoutParams = layoutParams
         horizontalScrollView.isFillViewport = true
-        horizontalScrollView.setPadding(0, 12, 0, 28)
+        horizontalScrollView.setPadding(PADDING_START, PADDING_TOP, PADDING_END, PADDING_BOTTOM)
         horizontalScrollView.addView(contentView)
         this.addView(horizontalScrollView)
     }
@@ -56,7 +56,7 @@ class JsonRenderView : ScrollView {
     }
 
     fun bind(jsonStr: String) {
-        require(!hasAlreadyBounded) { "JsonRenderView is already bound." }
+        checkAlreadyBound()
         try {
             when (val data = JSONTokener(jsonStr).nextValue()) {
                 is JSONObject -> mJSONObject = data
@@ -70,15 +70,19 @@ class JsonRenderView : ScrollView {
     }
 
     fun bind(jsonObject: JSONObject) {
-        require(!hasAlreadyBounded) { "JsonRenderView is already bound." }
+        checkAlreadyBound()
         this.mJSONObject = jsonObject
         createView()
     }
 
     fun bind(jsonArray: JSONArray) {
-        require(!hasAlreadyBounded) { "JsonRenderView is already bound." }
+        checkAlreadyBound()
         this.mJSONArray = jsonArray
         createView()
+    }
+
+    private fun checkAlreadyBound() {
+        require(!hasAlreadyBounded) { "JsonRenderView is already bound." }
     }
 
     private fun createView() {
@@ -86,17 +90,26 @@ class JsonRenderView : ScrollView {
         jsonView.showIcon(true)
         jsonView.hideValue()
         val value = mJSONObject ?: mJSONArray
-        jsonView.showKey(context.createSpan {
-            append(
-                italic(
-                    fontColor(
-                        if (value is JSONObject) "Object {...} " else "Array [...] ",
-                        context.color(R.color.jrv__root_text_color)
+        jsonView.showKey(
+            context.createSpan {
+                append(
+                    italic(
+                        fontColor(
+                            if (value is JSONObject) "Object {...} " else "Array [...] ",
+                            context.color(R.color.jrv__root_text_color)
+                        )
                     )
                 )
-            )
-        })
+            }
+        )
         jsonView.setOnClickListener(OnRowClickListener(value, jsonView, 0, config))
         contentView.addView(jsonView)
+    }
+
+    private companion object {
+        const val PADDING_START = 0
+        const val PADDING_TOP = 0
+        const val PADDING_END = 0
+        const val PADDING_BOTTOM = 0
     }
 }

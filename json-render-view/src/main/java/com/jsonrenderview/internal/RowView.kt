@@ -51,7 +51,7 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
     private fun showChildCount(type: Type, count: Int) {
         binding.keyInfo.visibility = VISIBLE
         binding.keyInfo.setSpan {
-            when(type) {
+            when (type) {
                 is Type.Object -> {
                     append(bold("{ "))
                     append("$count")
@@ -63,7 +63,6 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
                     append(bold(" ]"))
                 }
             }
-
         }
     }
 
@@ -93,12 +92,13 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
 
     fun handleJsonObject(key: String, value: Any, hierarchy: Int) {
         val newHierarchy = hierarchy + 1
-        setIndentation(newHierarchy)
+        setIndentation()
         hideIcon()
+        val keyStringValue = "\"$key\""
         when (value) {
             is JSONObject -> {
                 val keySpan: CharSequence = context.createSpan {
-                    append(fontColor("\"$key\"", config.keyObjectColor))
+                    append(fontColor(keyStringValue, config.keyObjectColor))
                     append(fontColor(" : ", context.color(R.color.jrv__colon_color)))
                 }
                 showIcon(true)
@@ -109,7 +109,7 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
 
             is JSONArray -> {
                 val keySpan: CharSequence = context.createSpan {
-                    append(fontColor("\"$key\"", config.keyObjectColor))
+                    append(fontColor(keyStringValue, config.keyObjectColor))
                     append(fontColor(" : ", context.color(R.color.jrv__colon_color)))
                 }
                 showIcon(true)
@@ -120,7 +120,7 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
 
             else -> {
                 val keySpan: CharSequence = context.createSpan {
-                    append(fontColor("\"$key\"", config.keyFieldColor))
+                    append(fontColor(keyStringValue, config.keyFieldColor))
                     append(fontColor(" : ", context.color(R.color.jrv__colon_color)))
                 }
                 val valueColor: Int = when (value) {
@@ -129,15 +129,17 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
                     is Number -> config.valueNumberColor
                     else -> config.valueNullColor
                 }
-                showValue(context.createSpan {
-                    append(fontColor("$value", valueColor))
-                })
+                showValue(
+                    context.createSpan {
+                        append(fontColor("$value", valueColor))
+                    }
+                )
                 showKey(keySpan)
             }
         }
     }
 
-    private fun setIndentation(newHierarchy: Int) {
+    private fun setIndentation() {
         val startMarginInPixels = resources.getDimensionPixelSize(R.dimen.jrv__indentation_width)
         setPadding(
             startMarginInPixels,
@@ -148,7 +150,7 @@ internal class RowView(context: Context, private val config: Config) : LinearLay
     }
 
     sealed class Type {
-        object Object: Type()
-        object Array: Type()
+        object Object : Type()
+        object Array : Type()
     }
 }
