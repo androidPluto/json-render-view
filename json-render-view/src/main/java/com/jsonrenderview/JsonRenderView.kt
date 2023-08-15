@@ -2,7 +2,6 @@ package com.jsonrenderview
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ViewGroup
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.ScrollView
@@ -38,6 +37,7 @@ class JsonRenderView : ScrollView {
     }
 
     private var config = Config()
+    val action = ActionHandler(contentView)
 
     private fun initView() {
         val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
@@ -98,36 +98,5 @@ class JsonRenderView : ScrollView {
         })
         jsonView.setOnClickListener(OnRowClickListener(value, jsonView, 0, config))
         contentView.addView(jsonView)
-    }
-
-    fun expand() {
-        clickAllView(contentView, false)
-    }
-
-    fun collapse() {
-        clickAllView(contentView, true)
-    }
-
-    private fun clickAllView(viewGroup: ViewGroup, collapse: Boolean) {
-        if (viewGroup is RowView) {
-            operationJsonView(viewGroup, collapse)
-        }
-        for (i in 0 until viewGroup.childCount) {
-            val view = viewGroup.getChildAt(i)
-            if (viewGroup is RowView) {
-                operationJsonView(viewGroup, collapse)
-            }
-            if (view is ViewGroup) {
-                clickAllView(view, collapse)
-            }
-        }
-    }
-
-    private fun operationJsonView(jsonView: RowView?, collapse: Boolean) {
-        if (collapse) {
-            jsonView?.expand()
-        } else {
-            jsonView?.collapse()
-        }
     }
 }

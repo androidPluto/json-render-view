@@ -9,9 +9,11 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="wrap_content"
+        android:layout_width="16dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="1dp"
+        android:contentDescription="@string/jrv__rov_view_icon_description"
+        android:scaleType="centerCrop"
         android:src="@drawable/jrv__indicator_collapse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +23,7 @@
         android:id="@+id/key"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/muli"
         android:gravity="center_vertical"
         android:textSize="16sp"

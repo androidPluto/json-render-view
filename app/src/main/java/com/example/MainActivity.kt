@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_expand -> binding.json.expand()
-            R.id.action_collapse -> binding.json.collapse()
+            R.id.action_expand -> binding.json.action.expand()
+            R.id.action_collapse -> binding.json.action.collapse()
         }
         return super.onOptionsItemSelected(item)
     }
