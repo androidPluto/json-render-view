@@ -3,17 +3,26 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+apply from: "$rootDir/scripts/build/utils.gradle"
+def verCode, verName
+(verCode, verName) = genVersion()
+
 android {
     namespace 'com.srtvprateek.jsonrenderview'
     compileSdk 33
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
 
     defaultConfig {
         minSdk 21
         targetSdk 33
+
+        buildConfigField ("String", "VERSION_NAME", "\"${verName}\"")
+        buildConfigField ("long", "VERSION_CODE", "${verCode}")
+        buildConfigField ("String", "GIT_SHA", "\"${gitSha()}\"")
     }
 
     buildTypes {
