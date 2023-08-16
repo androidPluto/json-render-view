@@ -4,8 +4,11 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import com.example.databinding.ActivityMainBinding
 import com.jsonrenderview.Config
@@ -28,6 +31,19 @@ class MainActivity : AppCompatActivity() {
         )
         viewModel.jsonString.removeObserver(parsedAttrObserver)
         viewModel.jsonString.observe(this, parsedAttrObserver)
+
+        binding.searchEdit.doOnTextChanged { text, _, _, _ ->
+            if(text.toString().isEmpty()) {
+                binding.json.search.clear()
+                binding.searchCount.visibility = GONE
+            } else {
+                val count = binding.json.search.highlight(text.toString())
+                binding.searchCount.visibility = VISIBLE
+                binding.searchCount.text = count.toString()
+            }
+        }
+        binding.searchNext.setOnClickListener { binding.json.search.navigateNext() }
+        binding.searchPrevious.setOnClickListener { binding.json.search.navigatePrevious() }
 
         viewModel.parseJson(assets.open("object.json"))
     }

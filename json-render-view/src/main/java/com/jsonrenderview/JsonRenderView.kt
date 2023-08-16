@@ -35,6 +35,7 @@ class JsonRenderView : ScrollView {
 
     private var config = Config()
     val action = ActionHandler(contentView)
+    val search = SearchHandler(contentView)
 
     private fun initView() {
         val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
