@@ -26,9 +26,7 @@ class JsonRenderView : ScrollView {
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
+        context, attrs, defStyleAttr
     )
 
     init {
@@ -42,12 +40,14 @@ class JsonRenderView : ScrollView {
         val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         contentView.layoutParams = layoutParams
         contentView.orientation = LinearLayout.VERTICAL
-        val horizontalScrollView = HorizontalScrollView(context)
-        horizontalScrollView.layoutParams = layoutParams
-        horizontalScrollView.isFillViewport = true
-        horizontalScrollView.setPadding(PADDING_START, PADDING_TOP, PADDING_END, PADDING_BOTTOM)
-        horizontalScrollView.addView(contentView)
-        this.addView(horizontalScrollView)
+        this.addView(
+            HorizontalScrollView(context).apply {
+                this.layoutParams = layoutParams
+                isFillViewport = true
+                setPadding(PADDING_START, PADDING_TOP, PADDING_END, PADDING_BOTTOM)
+                addView(contentView)
+            }
+        )
     }
 
     fun applyConfig(config: Config) {
@@ -85,30 +85,26 @@ class JsonRenderView : ScrollView {
     }
 
     private fun createView() {
-        val jsonView = RowView(context, config)
-        jsonView.showIcon(true)
-        jsonView.hideValue()
         val value = mJSONObject ?: mJSONArray
-        jsonView.showKey(
-            context.createSpan {
-                append(
-                    italic(
-                        fontColor(
-                            if (value is JSONObject) "Object {...} " else "Array [...] ",
-                            context.color(R.color.jrv__root_text_color)
-                        )
-                    )
+        val rootKey = if (value is JSONObject) "Object {...} " else "Array [...] "
+        contentView.addView(
+            RowView(context, config).apply {
+                showIcon(true)
+                hideValue()
+                showKey(
+                    context.createSpan {
+                        append(italic(fontColor(rootKey, context.color(R.color.jrv__root_text_color))))
+                    }
                 )
+                setOnClickListener(OnRowClickListener(value, this, 0, config))
             }
         )
-        jsonView.setOnClickListener(OnRowClickListener(value, jsonView, 0, config))
-        contentView.addView(jsonView)
     }
 
     private companion object {
         const val PADDING_START = 0
-        const val PADDING_TOP = 0
+        const val PADDING_TOP = 12
         const val PADDING_END = 0
-        const val PADDING_BOTTOM = 0
+        const val PADDING_BOTTOM = 28
     }
 }
